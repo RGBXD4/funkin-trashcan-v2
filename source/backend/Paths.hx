@@ -485,7 +485,7 @@ class Paths
 
 	#if MODS_ALLOWED
 	inline static public function mods(key:String = '')
-		return 'dumpster/' + key;
+		return Sys.getCwd() + 'dumpster/' + key;
 
 	inline static public function modsJson(key:String)
 		return modFolders('data/' + key + '.json');
@@ -523,7 +523,7 @@ class Paths
 			if(FileSystem.exists(fileToCheck))
 				return fileToCheck;
 		}
-		return 'dumpster/' + key;
+		return Sys.getCwd() + 'dumpster/' + key;
 	}
 	#end
 
