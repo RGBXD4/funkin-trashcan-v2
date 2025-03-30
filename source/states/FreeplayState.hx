@@ -638,6 +638,7 @@ class FreeplayState extends MusicBeatState
 
 	function changePortrait(newPortada:String, curDiff:String = "")
 	{
+		#if MODS_ALLOWED
 		if (!Paths.fileExists('images/menu/freeplayshit/portraits/' + newPortada + '.png', IMAGE)) { //si no hay portada en assets
 			if (!FileSystem.exists(Paths.mods(Mods.currentModDirectory + '/images/covers/$newPortada.png'))) {
 				portada.loadGraphic(Paths.image('menu/freeplayshit/portraits/null como el del mod de zink'));
@@ -653,15 +654,18 @@ class FreeplayState extends MusicBeatState
 			else portada.loadGraphic(Paths.image('menu/freeplayshit/portraits/' + newPortada));
 			trace('portrait loaded: "menu/freeplayshit/portraits/' + newPortada + '"');
 		}
+		#end
 	}
 
 	function changeTitle(newTitle:String)
 		{
+			#if MODS_ALLOWED
 			if (!Paths.fileExists('images/menu/freeplayshit/titulos/' + newTitle + '.png', IMAGE))	
 				if (!FileSystem.exists(Paths.mods(Mods.currentModDirectory + '/images/titulos/$newTitle.png'))) titulo.loadGraphic(Paths.image('menu/freeplayshit/titulos/mario'));
 				else titulo.loadGraphic(Paths.lifeIsLikeAVideoGame('titulos/${newTitle}'));	
 			else
 				titulo.loadGraphic(Paths.image('menu/freeplayshit/titulos/' + newTitle));
+			#end
 		}
 
 	function fcStampChecker(typeFC:String, playSound:Bool = true) 
