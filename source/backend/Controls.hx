@@ -165,7 +165,7 @@ class Controls
 	var hitbox:mobile.flixel.FlxHitbox = new mobile.flixel.FlxHitbox();
 	if (MusicBeatState.hitBox)
 	{
-	return swtich(ways)
+	return switch(ways)
 	{
 	case JP:
 	return switch(key)
