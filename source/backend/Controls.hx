@@ -168,7 +168,7 @@ class Controls
 	return switch(ways)
 	{
 	case JP:
-	return switch(key)
+	return switch(keys)
         {
             case "note_left": hitbox.buttons[0].justPressed;
             case "note_down": hitbox.buttons[1].justPressed;
@@ -177,7 +177,7 @@ class Controls
             default: false;
 	}
 	case P:
-	return switch(key)
+	return switch(keys)
         {
             case "note_left": hitbox.buttons[0].pressed;
             case "note_down": hitbox.buttons[1].pressed;
@@ -186,7 +186,7 @@ class Controls
             default: false;
         }
 	case JR:
-	return switch(key)
+	return switch(keys)
         {
             case "note_left": hitbox.buttons[0].justReleased;
             case "note_down": hitbox.buttons[1].justReleased;
