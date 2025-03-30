@@ -162,7 +162,7 @@ class Controls
 	#if mobile
 	private function _mobile(keys:String, ways:Ways):Bool
 {
-	var hitbox = new mobile.flixel.FlxHitbox;
+	var hitbox:mobile.flixel.FlxHitbox = new mobile.flixel.FlxHitbox();
 	if (MusicBeatState.hitBox)
 	{
 	return swtich(ways)
