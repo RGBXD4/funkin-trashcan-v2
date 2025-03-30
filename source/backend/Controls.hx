@@ -160,11 +160,14 @@ class Controls
 		return false;
 	}
 	#if mobile
-	private function _mobile(keys:String):Bool
+	private function _mobile(keys:String, ways:Ways):Bool
 {
 	var hitbox = new mobile.flixel.FlxHitbox;
 	if (MusicBeatState.hitBox)
 	{
+	return swtich(ways)
+	{
+	case JP:
 	return switch(key)
         {
             case "note_left": hitbox.buttons[0].justPressed;
@@ -173,6 +176,25 @@ class Controls
             case "note_right":hitbox.buttons[3].justPressed;
             default: false;
 	}
+	case P:
+	return switch(key)
+        {
+            case "note_left": hitbox.buttons[0].pressed;
+            case "note_down": hitbox.buttons[1].pressed;
+            case "note_up":   hitbox.buttons[2].pressed;
+            case "note_right":hitbox.buttons[3].pressed;
+            default: false;
+        }
+	case JR:
+	return switch(key)
+        {
+            case "note_left": hitbox.buttons[0].justReleased;
+            case "note_down": hitbox.buttons[1].justReleased;
+            case "note_up":   hitbox.buttons[2].justReleased;
+            case "note_right":hitbox.buttons[3].justReleased;
+            default: false;
+        }
+        }
 	}
 }
 	// IGNORE THESE
@@ -183,3 +205,11 @@ class Controls
 		gamepadBinds = ClientPrefs.gamepadBinds;
 	}
 }
+#if mobile
+enum Ways
+{
+JP;
+P;
+JR;
+}
+#end
