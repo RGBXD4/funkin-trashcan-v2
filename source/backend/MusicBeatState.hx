@@ -25,8 +25,8 @@ class MusicBeatState extends FlxState
 	}
 
 		#if mobile
-		var mobileControls:MobileControls;
-	var hitBox:Bool = false;
+		public static var mobileControls:MobileControls;
+	public static var hitBox:Bool = false;
 	
 		public function addMobileControls()
 		{
