@@ -647,7 +647,7 @@ class PlayState extends MusicBeatState
 
 		#if mobile
 		addMobileControls();
-		MusicBeatState mobileControls.visible = true;
+		MusicBeatState.mobileControls.visible = true;
 		#end
 	}
 
