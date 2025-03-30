@@ -1166,9 +1166,10 @@ class PlayState extends MusicBeatState
 
 		if (SONG.song == "gallery") discordScore = 'Viewing the Gallery';
 		else	discordScore = '${SONG.song} | Score: ${songScore} ${ratingFC == "" ? "" : '($ratingFC)'}';
-
+#if desktop
 		if (storyDifficultyText == "Normal") DiscordClient.changePresence(detailsText, discordScore, iconP2.getCharacter(), true, songLength, discLogo.toLowerCase());
 		else DiscordClient.changePresence(detailsText, discordScore + " (" + storyDifficultyText + ")", iconP2.getCharacter(), true, songLength, discLogo.toLowerCase());
+		#end
 	}
 
 	public dynamic function fullComboFunction()
