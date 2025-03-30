@@ -197,6 +197,7 @@ class Controls
         }
 	}
 }
+	#end
 	// IGNORE THESE
 	public static var instance:Controls;
 	public function new()
