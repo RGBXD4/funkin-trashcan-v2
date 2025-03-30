@@ -57,7 +57,7 @@ class MusicBeatState extends FlxState
 		override function destroy()
 	        {
 			super.destroy();
-
+#if mobile
 			if (mobileControls != null)
 			mobileControls = FlxDestroyUtil.destroy(mobileControls);
 			#end
