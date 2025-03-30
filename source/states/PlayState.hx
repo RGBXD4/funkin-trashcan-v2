@@ -234,14 +234,12 @@ class PlayState extends MusicBeatState
 	public var opponentCameraOffset:Array<Float> = null;
 	public var girlfriendCameraOffset:Array<Float> = null;
 
-	#if DISCORD_ALLOWED
 	// Discord RPC variables
 	var storyDifficultyText:String = "";
 	var detailsText:String = "";
 	var detailsPausedText:String = "";
 	var discordScore:String = "";
 	var discLogo:String = "logo";
-	#end
 
 	//Achievement shit
 	var keysPressed:Array<Int> = [];
