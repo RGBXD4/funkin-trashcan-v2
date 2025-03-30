@@ -644,6 +644,11 @@ class PlayState extends MusicBeatState
 		cachePopUpScore();
 
 		if(eventNotes.length < 1) checkEventNote();
+
+		#if mobile
+		addMobileControls();
+		MusicBeatState mobileControls.visible = true;
+		#end
 	}
 
 	function set_songSpeed(value:Float):Float
