@@ -91,7 +91,7 @@ class Controls
 		if(result) controllerMode = false;
 
 		#if mobile
-		return result || _myGamepadJustPressed(gamepadBinds[key]) || _mobile(key) == true;
+		return result || _myGamepadJustPressed(gamepadBinds[key]) || _mobileJustPressed(key) == true;
 		#else
 		return result || _myGamepadJustPressed(gamepadBinds[key]) == true;
 		#end
@@ -102,7 +102,7 @@ class Controls
 		var result:Bool = (FlxG.keys.anyPressed(keyboardBinds[key])== true);
 		if(result) controllerMode = false;
 
-		return result || _myGamepadPressed(gamepadBinds[key]) || _mobile(key) == true;
+		return result || _myGamepadPressed(gamepadBinds[key]) || _mobilePressed(key) == true;
 	}
 
 	public function justReleased(key:String)
@@ -110,7 +110,7 @@ class Controls
 		var result:Bool = (FlxG.keys.anyJustReleased(keyboardBinds[key]) == true);
 		if(result) controllerMode = false;
 
-		return result || _myGamepadJustReleased(gamepadBinds[key]) || _mobile(key) == true;
+		return result || _myGamepadJustReleased(gamepadBinds[key]) || _mobileJustReleased(key) == true;
 	}
 
 	public var controllerMode:Bool = false;
@@ -195,7 +195,20 @@ class Controls
             default: false;
         }
         }
+	}else{
+	return false;
 	}
+}
+private function _mobileJustPressed(key:String):Bool {
+    return _mobile(key, JP);
+}
+
+private function _mobilePressed(key:String):Bool {
+    return _mobile(key, P);
+}
+
+private function _mobileJustReleased(key:String):Bool {
+    return _mobile(key, JR);
 }
 	#end
 	// IGNORE THESE
