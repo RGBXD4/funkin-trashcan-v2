@@ -2,7 +2,12 @@ package backend;
 
 import flixel.FlxState;
 import backend.PsychCamera;
-
+#if mobile
+import mobile.MobileControls;
+import flixel.FlxCamera;
+import flixel.input.actions.FlxActionInput;
+import flixel.util.FlxDestroyUtil;
+#end
 class MusicBeatState extends FlxState
 {
 	private var curSection:Int = 0;
@@ -18,6 +23,44 @@ class MusicBeatState extends FlxState
 	{
 		return Controls.instance;
 	}
+
+		#if mobile
+		var mobileControls:MobileControls;
+	
+		public function addMobileControls()
+		{
+			if (mobileControls != null)
+			removeMobileControls();
+
+			mobileControls = new MobileControls();
+
+			controls.setHitBox(mobileControls.hitbox);
+
+			var camControls:FlxCamera = new FlxCamera();
+			FlxG.cameras.add(camControls, false);
+			camControls.bgColor.alpha = 0;
+
+			mobileControls.cameras = [camControls];
+			mobileControls.visible = false;
+			add(mobileControls);
+		}
+
+		public function removeMobileControls()
+	        {
+			if (mobileControls != null)
+			remove(mobileControls);
+		}
+
+		#end
+
+		override function destroy()
+	        {
+			super.destroy();
+
+			if (mobileControls != null)
+			mobileControls = FlxDestroyUtil.destroy(mobileControls);
+			#end
+		}
 
 	var _psychCameraInitialized:Bool = false;
 
