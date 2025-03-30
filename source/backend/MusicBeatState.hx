@@ -26,6 +26,7 @@ class MusicBeatState extends FlxState
 
 		#if mobile
 		var mobileControls:MobileControls;
+	var hitBox:Bool = false;
 	
 		public function addMobileControls()
 		{
@@ -34,7 +35,7 @@ class MusicBeatState extends FlxState
 
 			mobileControls = new MobileControls();
 
-			controls.setHitBox(mobileControls.hitbox);
+			hitBox = true;
 
 			var camControls:FlxCamera = new FlxCamera();
 			FlxG.cameras.add(camControls, false);
