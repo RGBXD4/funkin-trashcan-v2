@@ -90,15 +90,19 @@ class Controls
 		var result:Bool = (FlxG.keys.anyJustPressed(keyboardBinds[key]) == true);
 		if(result) controllerMode = false;
 
+		#if mobile
+		return result || _myGamepadJustPressed(gamepadBinds[key]) || _mobile(key) == true;
+		#else
 		return result || _myGamepadJustPressed(gamepadBinds[key]) == true;
+		#end
 	}
 
 	public function pressed(key:String)
 	{
-		var result:Bool = (FlxG.keys.anyPressed(keyboardBinds[key]) == true);
+		var result:Bool = (FlxG.keys.anyPressed(keyboardBinds[key])== true);
 		if(result) controllerMode = false;
 
-		return result || _myGamepadPressed(gamepadBinds[key]) == true;
+		return result || _myGamepadPressed(gamepadBinds[key]) || _mobile(key) == true;
 	}
 
 	public function justReleased(key:String)
@@ -106,7 +110,7 @@ class Controls
 		var result:Bool = (FlxG.keys.anyJustReleased(keyboardBinds[key]) == true);
 		if(result) controllerMode = false;
 
-		return result || _myGamepadJustReleased(gamepadBinds[key]) == true;
+		return result || _myGamepadJustReleased(gamepadBinds[key]) || _mobile(key) == true;
 	}
 
 	public var controllerMode:Bool = false;
@@ -155,7 +159,22 @@ class Controls
 		}
 		return false;
 	}
-
+	#if mobile
+	private function _mobile(keys:String):Bool
+{
+	var hitbox = new mobile.flixel.FlxHitbox;
+	if (MusicBeatState.hitBox)
+	{
+	return switch(key)
+        {
+            case "note_left": hitbox.buttons[0].justPressed;
+            case "note_down": hitbox.buttons[1].justPressed;
+            case "note_up":   hitbox.buttons[2].justPressed;
+            case "note_right":hitbox.buttons[3].justPressed;
+            default: false;
+	}
+	}
+}
 	// IGNORE THESE
 	public static var instance:Controls;
 	public function new()
