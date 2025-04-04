@@ -17,6 +17,8 @@ class Controls
 	//Dumb but easily usable code, or Smart but complicated? Your choice.
 	//Also idk how to use macros they're weird as fuck lol
 
+	public static var hitbox:mobile.flixel.FlxHitbox();
+
 	// Pressed buttons (directions)
 	public var UI_UP_P(get, never):Bool;
 	public var UI_DOWN_P(get, never):Bool;
@@ -162,7 +164,7 @@ class Controls
 	#if mobile
 	private function _mobile(keys:String, ways:Ways):Bool
 {
-	var hitbox:mobile.flixel.FlxHitbox = new mobile.flixel.FlxHitbox();
+
 	if (MusicBeatState.hitBox)
 	{
 	return switch(ways)
