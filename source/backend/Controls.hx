@@ -17,7 +17,7 @@ class Controls
 	//Dumb but easily usable code, or Smart but complicated? Your choice.
 	//Also idk how to use macros they're weird as fuck lol
 
-	public static var hitbox:mobile.flixel.FlxHitbox();
+	public static var hitbox:mobile.flixel.FlxHitbox;
 
 	// Pressed buttons (directions)
 	public var UI_UP_P(get, never):Bool;
